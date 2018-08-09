@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
+
+    	<ResourceLink name="jdbc/runelite"
+				  global="jdbc/runelite"
+				  type="javax.sql.DataSource"
+	/>
+    	<ResourceLink name="jdbc/runelite-tracker"
+				  global="jdbc/runelite-tracker"
+				  type="javax.sql.DataSource"
+	/>
+    	<ResourceLink name="jdbc/runelite-cache2"
+				  global="jdbc/runelite-cache2"
+				  type="javax.sql.DataSource"
+	/>
+    
+    <Environment name="oauth.client-id" value="foo" type="java.lang.String"/>
+    <Environment name="oauth.client-secret" value="bar" type="java.lang.String"/>
+    <Environment name="minio.endpoint" value="http://10.96.22.171:9000" type="java.lang.String"/>
+    <Environment name="minio.accesskey" value="AM54M27O4WZK65N6F8IP" type="java.lang.String"/>
+    <Environment name="minio.secretkey" value="/PZCxzmsJzwCHYlogcymuprniGCaaLUOET2n6yMP" type="java.lang.String"/>
+    <Environment name="minio.bucket" value="runelite" type="java.lang.String"/>
+    <Environment name="runelite.twitter.consumerkey" value="moo" type="java.lang.String"/>
+    <Environment name="runelite.twitter.secretkey" value="cow" type="java.lang.String"/>
+    <Environment name="runelite.twitter.listid" value="968949795153948673" type="java.lang.String"/>
+</Context>
