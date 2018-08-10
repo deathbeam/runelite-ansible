@@ -1,3 +1,4 @@
+directory: "{{ ansible_env.HOME }}/runelite-service"
 database:
   password: runelite
   root_password: runelite

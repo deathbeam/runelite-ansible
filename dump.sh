@@ -2,8 +2,8 @@
 
 dir=`dirname "$(readlink -f "$0")"`
 echo "Directory " ${dir}
-dumpdir=${dir}/mysql/init
-echo "Dump directory " ${dir}
+dumpdir=${dir}/roles/database/files
+echo "Dump directory " ${dumpdir}
 args="'$*'"
 
 dump_db() {
