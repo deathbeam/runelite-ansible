@@ -1,0 +1,33 @@
+-
+  name: install docker reposotory
+  yum_repository:
+    name: docker
+    description: docker
+    baseurl: https://download.docker.com/linux/centos/7/$basearch/stable
+    gpgcheck: no
+-
+  name: install docker
+  yum:
+    name: docker-ce
+    state: latest
+-
+  name: install python
+  yum:
+    name: python
+    state: latest
+-
+  name: install python-pip
+  yum:
+    name: python-pip
+    state: latest
+-
+  name: install docker-py
+  pip:
+    name: docker-py
+    state: latest
+-
+  name: start docker service
+  systemd:
+    name: docker
+    state: started
+    enabled: yes

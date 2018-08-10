@@ -1,46 +1,46 @@
 -
-  name: "Ensure {{ directory }}/tomcat/conf dir exists"
+  name: ensure {{ directory }}/tomcat/conf dir exists
   file: path="{{ directory }}/tomcat/conf" state=directory
 -
-  name: "Write the tomcat context xml file"
+  name: write the tomcat context xml file
   template:
     src: context.xml.j2
     dest: "{{ directory }}/tomcat/conf/context.xml"
 -
-  name: "Write the tomcat server xml file"
+  name: write the tomcat server xml file
   template:
     src: server.xml.j2
     dest: "{{ directory }}/tomcat/conf/server.xml"
 -
-  name: "Write the tomcat users xml file"
+  name: write the tomcat users xml file
   template:
     src: tomcat-users.xml.j2
     dest: "{{ directory }}/tomcat/conf/tomcat-users.xml"
 -
-  name: "Write the tomcat manager context xml file"
+  name: write the tomcat manager context xml file
   copy:
     src: manager-context.xml
     dest: "{{ directory }}/tomcat/conf/manager-context.xml"
 -
-  name: "Ensure {{ directory }}/tomcat/lib dir exists"
+  name: ensure {{ directory }}/tomcat/lib dir exists
   file: path="{{ directory }}/tomcat/lib" state=directory
 -
-  name: "Download HikariCP 3.2.0"
+  name: download HikariCP 3.2.0
   get_url:
     url: "http://central.maven.org/maven2/com/zaxxer/HikariCP/3.2.0/HikariCP-3.2.0.jar"
     dest: "{{ directory }}/tomcat/lib/hikaricp.jar"
 -
-  name: "Download MariaDB connector 2.2.6"
+  name: download MariaDB connector 2.2.6
   get_url:
     url: "https://downloads.mariadb.com/Connectors/java/connector-java-2.2.6/mariadb-java-client-2.2.6.jar"
     dest: "{{ directory }}/tomcat/lib/mariadb-connector.jar"
 -
-  name: "Download Slf4j API 1.7.25"
+  name: download Slf4j API 1.7.25
   get_url:
     url: "http://central.maven.org/maven2/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar"
     dest: "{{ directory }}/tomcat/lib/slf4j-api.jar"
 -
-  name: "Launch tomcat container"
+  name: deploy tomcat container
   docker_container:
     name: web
     image: "tomcat:8"

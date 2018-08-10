@@ -1,25 +1,25 @@
 -
-  name: "Ensure {{ directory }}/mysql/init dir exists"
+  name: ensure {{ directory }}/mysql/init dir exists
   file: path="{{ directory }}/mysql/init" state=directory
 -
-  name: "Write the database init sql file"
+  name: write database init sql file
   template:
     src: init.sql.j2
     dest: "{{ directory }}/mysql/init/init.sql"
 -
-  name: "Write the database dump sql files"
+  name: write database dump sql files
   copy: src="{{ item }}.sql" dest="{{ directory }}/mysql/init/{{ item }}.sql"
   with_items: "{{ resources }}"
 -
-  name: "Ensure {{ directory }}/mysql/plugins dir exists"
+  name: ensure {{ directory }}/mysql/plugins dir exists
   file: path="{{ directory }}/mysql/plugins" state=directory
 -
-  name: "Write the database plugins"
+  name: write database plugins
   copy:
     src: libxp.so
     dest: "{{ directory }}/mysql/plugins/libxp.so"
 -
-  name: "Launch database container"
+  name: deploy database container
   docker_container:
     name: db
     image: "mariadb:10.2.16"
@@ -28,14 +28,14 @@
     env:
       MYSQL_ROOT_PASSWORD: "{{ database.root_password }}"
     volumes:
-      - "{{ directory }}/mysql/init/:/docker-entrypoint-initdb.d"
+      - "{{ '/var/lib/mysql:/var/lib/mysql' if database.mount_library else directory + '/mysql/init/:/docker-entrypoint-initdb.d' }}"
       - "{{ directory }}/mysql/plugins/:/docker-entrypoint-dbplugins"
 -
-  name: "Get database IP address"
+  name: get database IP address
   command: "docker inspect --format '{''{ .NetworkSettings.IPAddress }''}' db"
   register: mariadb_ip_address
 -
-  name: "Wait for database to become ready"
+  name: wait for database to become ready
   wait_for:
     host: "{{ mariadb_ip_address.stdout }}"
     port: 3306

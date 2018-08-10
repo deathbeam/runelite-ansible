@@ -1,9 +1,10 @@
 ---
 -
   hosts:
-    - all
     - localhost
+    - all
   roles:
+    - { role: centos, when: ansible_distribution == 'CentOS' }
     - database
     - tomcat
   vars_files:
