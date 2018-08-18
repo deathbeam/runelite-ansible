@@ -25,28 +25,31 @@
   name: ensure {{ directory }}/tomcat/lib dir exists
   file: path="{{ directory }}/tomcat/lib" state=directory
 -
-  name: download HikariCP 3.2.0
+  name: download HikariCP
   get_url:
-    url: "http://central.maven.org/maven2/com/zaxxer/HikariCP/3.2.0/HikariCP-3.2.0.jar"
+    url: "http://central.maven.org/maven2/com/zaxxer/HikariCP/2.7.9/HikariCP-2.7.9.jar"
     dest: "{{ directory }}/tomcat/lib/hikaricp.jar"
+    checksum: sha256:e7d6bafe1ee40e8935f2cc79146312815ebe2479602b1d029438dac17537d9bd
 -
-  name: download MariaDB connector 2.2.6
+  name: download MariaDB connector
   get_url:
-    url: "https://downloads.mariadb.com/Connectors/java/connector-java-2.2.6/mariadb-java-client-2.2.6.jar"
+    url: "https://downloads.mariadb.com/Connectors/java/connector-java-2.2.3/mariadb-java-client-2.2.3.jar"
     dest: "{{ directory }}/tomcat/lib/mariadb-connector.jar"
+    checksum: sha256:f367db6535798fdc990a183197d6e8ec5b4a170877e9a9f9084376d66cf2acbb
 -
-  name: download Slf4j API 1.7.25
+  name: download Slf4j API
   get_url:
     url: "http://central.maven.org/maven2/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar"
     dest: "{{ directory }}/tomcat/lib/slf4j-api.jar"
+    checksum: sha256:18c4a0095d5c1da6b817592e767bb23d29dd2f560ad74df75ff3961dbde25b79
 -
   name: deploy tomcat container
   docker_container:
     name: web
-    image: "tomcat:8"
+    image: "tomcat:7-jre8"
     restart: true
     ports:
-      - "80:8080"
+      - "8080:8080"
     links:
       - db
     volumes:
