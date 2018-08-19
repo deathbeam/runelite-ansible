@@ -24,7 +24,7 @@
     name: db
     image: "mariadb:10.2.16"
     command: "--plugin-dir=/docker-entrypoint-dbplugins"
-    restart: true
+    restart_policy: always
     env:
       MYSQL_ROOT_PASSWORD: "{{ database.root_password }}"
     volumes:

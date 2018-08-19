@@ -47,7 +47,7 @@
   docker_container:
     name: web
     image: "tomcat:7-jre8"
-    restart: true
+    restart_policy: always
     ports:
       - "8080:8080"
     links:
