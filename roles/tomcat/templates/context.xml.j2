@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
-    <WatchedResource>WEB-INF/web.xml</WatchedResource>
-    <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
+	<WatchedResource>WEB-INF/web.xml</WatchedResource>
 
-    {% for resource in resources %}
+	{% for resource in resources %}
 	<ResourceLink name="jdbc/{{ resource.name }}"
 				  global="jdbc/{{ resource.name }}"
 				  type="javax.sql.DataSource"
 	/>
-    {% endfor %}
+	{% endfor %}
 
-    <Environment name="oauth.client-id" value="{{ oauth.clientid }}" type="java.lang.String"/>
-    <Environment name="oauth.client-secret" value="{{ oauth.clientsecret }}" type="java.lang.String"/>
-    <Environment name="minio.endpoint" value="http://minio:9000" type="java.lang.String"/>
-    <Environment name="minio.accesskey" value="{{ minio.accesskey }}" type="java.lang.String"/>
-    <Environment name="minio.secretkey" value="{{ minio.secretkey }}" type="java.lang.String"/>
-    <Environment name="minio.bucket" value="{{ minio.bucket }}" type="java.lang.String"/>
-    <Environment name="runelite.twitter.consumerkey" value="{{ twitter.consumerkey }}" type="java.lang.String"/>
-    <Environment name="runelite.twitter.secretkey" value="{{ twitter.secretkey }}" type="java.lang.String"/>
-    <Environment name="runelite.twitter.listid" value="{{ twitter.listid }}" type="java.lang.String"/>
+	<Environment name="oauth.client-id" value="{{ oauth.clientid }}" type="java.lang.String"/>
+	<Environment name="oauth.client-secret" value="{{ oauth.clientsecret }}" type="java.lang.String"/>
+	<Environment name="minio.endpoint" value="http://minio:9000" type="java.lang.String"/>
+	<Environment name="minio.accesskey" value="{{ minio.accesskey }}" type="java.lang.String"/>
+	<Environment name="minio.secretkey" value="{{ minio.secretkey }}" type="java.lang.String"/>
+	<Environment name="minio.bucket" value="{{ minio.bucket }}" type="java.lang.String"/>
+	<Environment name="runelite.twitter.consumerkey" value="{{ twitter.consumerkey }}" type="java.lang.String"/>
+	<Environment name="runelite.twitter.secretkey" value="{{ twitter.secretkey }}" type="java.lang.String"/>
+	<Environment name="runelite.twitter.listid" value="{{ twitter.listid }}" type="java.lang.String"/>
 </Context>
