@@ -1,0 +1,15 @@
+-
+  name: deploy minio container
+  docker_container:
+    name: minio
+    image: "minio/minio"
+    restart_policy: always
+    command: "server /export"
+    ports:
+    - "9000:9000"
+    env:
+      MINIO_ACCESS_KEY: "{{ minio.accesskey }}"
+      MINIO_SECRET_KEY: "{{ minio.secretkey }}"
+    volumes:
+      - "/mnt/minio-data/:/export"
+      - "/mnt/minio-config/:/root/.minio"

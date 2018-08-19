@@ -6,9 +6,8 @@ database:
   user: runelite
 minio:
   accesskey: AM54M27O4WZK65N6F8IP
-  bucket: runelite
-  endpoint: "http://10.96.22.171:9000"
   secretkey: /PZCxzmsJzwCHYlogcymuprniGCaaLUOET2n6yMP
+  bucket: runelite
 oauth:
   clientid: foo
   clientsecret: bar

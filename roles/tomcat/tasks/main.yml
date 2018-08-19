@@ -52,6 +52,7 @@
       - "8080:8080"
     links:
       - db
+      - minio
     volumes:
       - "{{ directory }}/tomcat/lib/hikaricp.jar:/usr/local/tomcat/lib/hikaricp.jar"
       - "{{ directory }}/tomcat/lib/mariadb-connector.jar:/usr/local/tomcat/lib/mariadb-connector.jar"

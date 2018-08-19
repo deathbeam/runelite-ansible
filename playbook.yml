@@ -6,6 +6,7 @@
   roles:
     - { role: centos, when: ansible_distribution == 'CentOS' }
     - database
+    - minio
     - tomcat
   vars_files:
     - vars.yml
