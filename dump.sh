@@ -12,7 +12,7 @@ dump_db() {
 	sed -i '/CREATE DATABASE/d' "${dumpdir}/$1.sql"
 }
 
-resources=$(cat ${dir}/vars.yml | yq -r -c '.resources[]')
+resources=$(cat ${dir}/vars.yml | yq -r -c '.resources[].database')
 echo "Dumping resources " ${resources}
 
 for resource in ${resources}; do

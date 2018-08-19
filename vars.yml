@@ -12,9 +12,12 @@ oauth:
   clientid: foo
   clientsecret: bar
 resources:
-  - runelite
-  - runelite-tracker
-  - runelite-cache2
+  - name: runelite
+    database: runelite
+  - name: runelite-tracker
+    database: runelite-tracker
+  - name: runelite-cache2
+    database: runelite-cache2
 tomcat:
   password: runelite
   user: runelite

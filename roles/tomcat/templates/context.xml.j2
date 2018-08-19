@@ -4,8 +4,8 @@
     <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
 
     {% for resource in resources %}
-	<ResourceLink name="jdbc/{{ resource }}"
-				  global="jdbc/{{ resource }}"
+	<ResourceLink name="jdbc/{{ resource.name }}"
+				  global="jdbc/{{ resource.name }}"
 				  type="javax.sql.DataSource"
 	/>
     {% endfor %}

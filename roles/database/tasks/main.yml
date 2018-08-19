@@ -8,7 +8,7 @@
     dest: "{{ directory }}/mysql/init/init.sql"
 -
   name: write database dump sql files
-  copy: src="{{ item }}.sql" dest="{{ directory }}/mysql/init/{{ item }}.sql"
+  copy: src="{{ item.database }}.sql" dest="{{ directory }}/mysql/init/{{ item.database }}.sql"
   with_items: "{{ resources }}"
 -
   name: ensure {{ directory }}/mysql/plugins dir exists

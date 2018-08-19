@@ -14,8 +14,8 @@
                   pathname="conf/tomcat-users.xml"/>
 
 		{% for resource in resources %}
-		<Resource name="jdbc/{{ resource }}" auth="Container" type="javax.sql.DataSource"
-				  global="jdbc/{{ resource }}"
+		<Resource name="jdbc/{{ resource.name }}" auth="Container" type="javax.sql.DataSource"
+				  global="jdbc/{{ resource.name }}"
 				  factory="com.zaxxer.hikari.HikariJNDIFactory"
 				  minimumIdle="5"
 				  maximumPoolSize="10"
@@ -23,7 +23,7 @@
 				  dataSourceClassName="org.mariadb.jdbc.MySQLDataSource"
 				  dataSource.serverName="db"
 				  dataSource.port="3306"
-				  dataSource.databaseName="{{ resource }}"
+				  dataSource.databaseName="{{ resource.database }}"
 				  dataSource.user="{{ database.user }}"
 				  dataSource.password="{{ database.password }}"
 		/>
