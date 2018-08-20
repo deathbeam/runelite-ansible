@@ -14,10 +14,11 @@
   name: ensure {{ directory }}/mysql/plugins dir exists
   file: path="{{ directory }}/mysql/plugins" state=directory
 -
-  name: write database plugins
-  copy:
-    src: libxp.so
+  name: download database plugin
+  get_url:
+    url: "https://github.com/runelite/runelite-mysql/releases/download/0.1/libxp.so"
     dest: "{{ directory }}/mysql/plugins/libxp.so"
+    checksum: sha256:d8c09e85a626e8bb4a2a8e63be240238afa4bea629b5bae526ec41c54fa45d8a
 -
   name: deploy database container
   docker_container:
