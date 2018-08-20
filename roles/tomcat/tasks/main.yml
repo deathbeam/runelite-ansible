@@ -17,11 +17,6 @@
     src: tomcat-users.xml.j2
     dest: "{{ directory }}/tomcat/conf/tomcat-users.xml"
 -
-  name: write the tomcat manager context xml file
-  copy:
-    src: manager-context.xml
-    dest: "{{ directory }}/tomcat/conf/manager-context.xml"
--
   name: ensure {{ directory }}/tomcat/lib dir exists
   file: path="{{ directory }}/tomcat/lib" state=directory
 -
@@ -60,4 +55,3 @@
       - "{{ directory }}/tomcat/conf/context.xml:/usr/local/tomcat/conf/context.xml"
       - "{{ directory }}/tomcat/conf/server.xml:/usr/local/tomcat/conf/server.xml"
       - "{{ directory }}/tomcat/conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml"
-      - "{{ directory }}/tomcat/conf/manager-context.xml:/usr/local/tomcat/webapps/manager/META-INF/context.xml"
