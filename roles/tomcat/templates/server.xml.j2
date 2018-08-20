@@ -32,7 +32,7 @@
 	</GlobalNamingResources>
 
 	<Service name="Catalina">
-		<Connector port="8080"
+		<Connector port="8080" address="127.0.0.1"
 				   protocol="org.apache.coyote.http11.Http11NioProtocol"
 				   connectionTimeout="20000"
 				   redirectPort="8443"/>
@@ -49,6 +49,10 @@
 					   prefix="localhost_access_log." suffix=".txt"
 					   pattern="%h %l %u %t &quot;%r&quot; %s %b"/>
 
+				<Valve className="org.apache.catalina.valves.RemoteIpValve"
+					   remoteIpHeader="X-Forwarded-For"
+					   requestAttributesEnabled="true"
+					   internalProxies="127\.0\.0\.1"  />
 			</Host>
 		</Engine>
 	</Service>
