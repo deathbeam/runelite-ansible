@@ -11,6 +11,11 @@
     name: docker-ce
     state: latest
 -
+  name: write the docker configuration file
+  copy:
+    src: daemon.json
+    dest: "/etc/docker/daemon.json"
+-
   name: install python
   yum:
     name: python
