@@ -2,15 +2,15 @@
   name: ensure {{ directory }}/tomcat/conf dir exists
   file: path="{{ directory }}/tomcat/conf" state=directory
 -
+  name: write the tomcat context xml file
+  template:
+    src: context.xml.j2
+    dest: "{{ directory }}/tomcat/conf/context.xml"
+-
   name: write the tomcat server xml file
   template:
     src: server.xml.j2
     dest: "{{ directory }}/tomcat/conf/server.xml"
--
-  name: write the tomcat users xml file
-  template:
-    src: tomcat-users.xml.j2
-    dest: "{{ directory }}/tomcat/conf/tomcat-users.xml"
 -
   name: ensure {{ directory }}/tomcat/lib dir exists
   file: path="{{ directory }}/tomcat/lib" state=directory
@@ -26,8 +26,6 @@
     url: "https://downloads.mariadb.com/Connectors/java/connector-java-2.2.3/mariadb-java-client-2.2.3.jar"
     dest: "{{ directory }}/tomcat/lib/mariadb-connector.jar"
     checksum: sha256:f367db6535798fdc990a183197d6e8ec5b4a170877e9a9f9084376d66cf2acbb
--
-
 -
   name: download Slf4j API
   get_url:
@@ -53,5 +51,5 @@
       - "{{ directory }}/tomcat/lib/hikaricp.jar:/usr/local/tomcat/lib/hikaricp.jar"
       - "{{ directory }}/tomcat/lib/mariadb-connector.jar:/usr/local/tomcat/lib/mariadb-connector.jar"
       - "{{ directory }}/tomcat/lib/slf4j-api.jar:/usr/local/tomcat/lib/slf4j-api.jar"
+      - "{{ directory }}/tomcat/conf/context.xml:/usr/local/tomcat/conf/context.xml"
       - "{{ directory }}/tomcat/conf/server.xml:/usr/local/tomcat/conf/server.xml"
-      - "{{ directory }}/tomcat/conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml"

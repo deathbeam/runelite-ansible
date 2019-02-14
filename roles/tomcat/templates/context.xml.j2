@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+	{% for resource in database.resources %}
+	<ResourceLink name="jdbc/{{ resource.name }}"
+				  global="jdbc/{{ resource.name }}"
+				  type="javax.sql.DataSource"
+	/>
+	{% endfor %}
+</Context>

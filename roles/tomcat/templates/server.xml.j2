@@ -13,6 +13,22 @@
 				  description="User database that can be updated and saved"
 				  factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
 				  pathname="conf/tomcat-users.xml"/>
+
+		{% for resource in database.resources %}
+		<Resource name="jdbc/{{ resource.name }}" auth="Container" type="javax.sql.DataSource"
+				  global="jdbc/{{ resource.name }}"
+				  factory="com.zaxxer.hikari.HikariJNDIFactory"
+				  minimumIdle="5"
+				  maximumPoolSize="10"
+				  connectionTimeout="5000"
+				  dataSourceClassName="org.mariadb.jdbc.MySQLDataSource"
+				  dataSource.serverName="db"
+				  dataSource.port="3306"
+				  dataSource.databaseName="{{ resource.database }}"
+				  dataSource.user="{{ database.user }}"
+				  dataSource.password="{{ database.password }}"
+		/>
+		{% endfor %}
 	</GlobalNamingResources>
 
 	<Service name="Catalina">
