@@ -38,6 +38,21 @@ CREATE TABLE IF NOT EXISTS `config` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `drops`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `drops` (
+  `killId` int(11) NOT NULL,
+  `itemId` int(11) NOT NULL,
+  `itemQuantity` int(11) NOT NULL,
+  KEY `killId` (`killId`),
+  CONSTRAINT `drops_ibfk_1` FOREIGN KEY (`killId`) REFERENCES `kills` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `examine`
 --
 
@@ -50,6 +65,27 @@ CREATE TABLE IF NOT EXISTS `examine` (
   `count` int(11) NOT NULL,
   `text` tinytext NOT NULL,
   UNIQUE KEY `type` (`type`,`id`,`text`(64))
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `ge_trades`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `ge_trades` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` int(11) NOT NULL,
+  `action` enum('BUY','SELL') NOT NULL,
+  `item` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `user_time` (`user`,`time`),
+  KEY `time` (`time`),
+  CONSTRAINT `ge_trades_ibfk_1` FOREIGN KEY (`user`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -85,6 +121,26 @@ CREATE TABLE IF NOT EXISTS `kc` (
   `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   UNIQUE KEY `name` (`name`,`boss`),
   KEY `time` (`time`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `kills`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `kills` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `accountId` int(11) NOT NULL,
+  `type` enum('NPC','PLAYER','EVENT','UNKNOWN') NOT NULL,
+  `eventId` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`),
+  KEY `idx_acc` (`accountId`,`time`),
+  KEY `idx_time` (`time`),
+  CONSTRAINT `kills_ibfk_1` FOREIGN KEY (`accountId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -200,4 +256,4 @@ CREATE TABLE IF NOT EXISTS `xtea` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-10 10:23:49
+-- Dump completed on 2019-02-14 20:58:21

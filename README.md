@@ -14,6 +14,12 @@ Usage:
 ansible-playbook playbook.yml
 ```
 
+Usage with Vagrant:
+
+```bash
+vagrant up
+```
+
 To deploy [http-service](https://github.com/runelite/runelite/tree/master/http-service)
 
 ```bash

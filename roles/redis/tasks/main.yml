@@ -1,0 +1,9 @@
+-
+  name: deploy redis container
+  docker_container:
+    name: redis
+    hostname: redis.local
+    networks:
+      - name: "{{ docker.network }}"
+    image: "redis:alpine"
+    restart_policy: always

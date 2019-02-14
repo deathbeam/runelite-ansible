@@ -2,11 +2,6 @@
   name: ensure {{ directory }}/tomcat/conf dir exists
   file: path="{{ directory }}/tomcat/conf" state=directory
 -
-  name: write the tomcat context xml file
-  template:
-    src: context.xml.j2
-    dest: "{{ directory }}/tomcat/conf/context.xml"
--
   name: write the tomcat server xml file
   template:
     src: server.xml.j2
@@ -32,6 +27,8 @@
     dest: "{{ directory }}/tomcat/lib/mariadb-connector.jar"
     checksum: sha256:f367db6535798fdc990a183197d6e8ec5b4a170877e9a9f9084376d66cf2acbb
 -
+
+-
   name: download Slf4j API
   get_url:
     url: "http://central.maven.org/maven2/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar"
@@ -40,7 +37,10 @@
 -
   name: deploy tomcat container
   docker_container:
-    name: web
+    name: tomcat
+    hostname: tomcat.local
+    networks:
+      - name: "{{ docker.network }}"
     image: "tomcat:7-jre8"
     restart_policy: always
     ports:
@@ -48,10 +48,10 @@
     links:
       - db
       - minio
+      - redis
     volumes:
       - "{{ directory }}/tomcat/lib/hikaricp.jar:/usr/local/tomcat/lib/hikaricp.jar"
       - "{{ directory }}/tomcat/lib/mariadb-connector.jar:/usr/local/tomcat/lib/mariadb-connector.jar"
       - "{{ directory }}/tomcat/lib/slf4j-api.jar:/usr/local/tomcat/lib/slf4j-api.jar"
-      - "{{ directory }}/tomcat/conf/context.xml:/usr/local/tomcat/conf/context.xml"
       - "{{ directory }}/tomcat/conf/server.xml:/usr/local/tomcat/conf/server.xml"
       - "{{ directory }}/tomcat/conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml"

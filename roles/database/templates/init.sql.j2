@@ -1,6 +1,6 @@
 create user if not exists '{{ database.user }}'@'%' identified by '{{ database.password }}';
 
-{% for resource in resources %}
+{% for resource in database.resources %}
 create database if not exists `{{ resource.database }}`;
 grant all on `{{ resource.database }}`.* to '{{ database.user }}'@'%' identified by '{{ database.password }}' with grant option;
 {% endfor %}

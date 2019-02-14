@@ -1,27 +1,24 @@
 directory: "{{ ansible_env.HOME }}/runelite-service"
+docker:
+  network: runelite_network
+
 database:
   mount_library: false
   password: runelite
   root_password: runelite
   user: runelite
+  resources:
+    - name: runelite
+      database: runelite
+    - name: runelite-tracker
+      database: runelite-tracker
+    - name: runelite-cache2
+      database: runelite-cache2
+
 minio:
   accesskey: AM54M27O4WZK65N6F8IP
   secretkey: /PZCxzmsJzwCHYlogcymuprniGCaaLUOET2n6yMP
-  bucket: runelite
-oauth:
-  clientid: foo
-  clientsecret: bar
-resources:
-  - name: runelite
-    database: runelite
-  - name: runelite-tracker
-    database: runelite-tracker
-  - name: runelite-cache2
-    database: runelite-cache2
+
 tomcat:
   password: runelite
   user: runelite
-twitter:
-  consumerkey: moo
-  listid: "968949795153948673"
-  secretkey: cow

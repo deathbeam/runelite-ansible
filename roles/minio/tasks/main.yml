@@ -2,11 +2,12 @@
   name: deploy minio container
   docker_container:
     name: minio
+    hostname: minio.local
+    networks:
+      - name: "{{ docker.network }}"
     image: "minio/minio"
     restart_policy: always
     command: "server /export"
-    ports:
-    - "9000:9000"
     env:
       MINIO_ACCESS_KEY: "{{ minio.accesskey }}"
       MINIO_SECRET_KEY: "{{ minio.secretkey }}"

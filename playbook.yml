@@ -5,8 +5,11 @@
     - all
   roles:
     - { role: centos, when: ansible_distribution == 'CentOS' }
+    - network
     - database
     - minio
+    - redis
     - tomcat
+    - http-service
   vars_files:
     - vars.yml
