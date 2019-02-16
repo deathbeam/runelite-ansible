@@ -4,9 +4,9 @@ docker:
 
 database:
   mount_library: false
-  password: runelite
   root_password: runelite
   user: runelite
+  password: runelite
   resources:
     - name: runelite
       database: runelite
@@ -18,7 +18,3 @@ database:
 minio:
   accesskey: AM54M27O4WZK65N6F8IP
   secretkey: /PZCxzmsJzwCHYlogcymuprniGCaaLUOET2n6yMP
-
-tomcat:
-  password: runelite
-  user: runelite
