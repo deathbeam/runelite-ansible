@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
+set -ex
+
 dir=`dirname "$(readlink -f "$0")"`
 echo "Directory " ${dir}
 dumpdir=${dir}/roles/database/files
 echo "Dump directory " ${dumpdir}
-args="'$*'"
+args="$*"
 
 dump_db() {
 	docker exec db sh -c 'exec mysqldump '$args' --skip-add-drop-table --databases '$1' -uroot -p"$MYSQL_ROOT_PASSWORD"' > ${dumpdir}/$1.sql

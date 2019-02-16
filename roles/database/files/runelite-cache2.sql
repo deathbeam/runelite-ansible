@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `archive` (
   `hash` binary(32) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `archive_revision` (`archiveId`,`revision`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=58216 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=116431 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `cache` (
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `revision_date` (`revision`,`date`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `file` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `archive_file` (`archive`,`fileId`),
   CONSTRAINT `file_ibfk_1` FOREIGN KEY (`archive`) REFERENCES `archive` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=292779 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=585557 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `index` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `indexId` (`cache`,`indexId`,`revision`,`crc`) USING BTREE,
   CONSTRAINT `index_ibfk_1` FOREIGN KEY (`cache`) REFERENCES `cache` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `index_archive` (
   KEY `archive` (`archive`) USING BTREE,
   CONSTRAINT `index_archive_ibfk_1` FOREIGN KEY (`index`) REFERENCES `index` (`id`),
   CONSTRAINT `index_archive_ibfk_2` FOREIGN KEY (`archive`) REFERENCES `archive` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58216 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=116431 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -117,4 +117,4 @@ CREATE TABLE IF NOT EXISTS `index_archive` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-16 13:29:53
+-- Dump completed on 2019-02-16 14:30:11
