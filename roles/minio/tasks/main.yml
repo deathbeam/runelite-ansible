@@ -7,7 +7,8 @@
       - name: "{{ docker.network }}"
     image: "minio/minio"
     restart_policy: always
-    command: "server /export"
+    entrypoint: sh
+    command: "-c 'mkdir -p /export/{{ minio.bucket }} && /usr/bin/minio server /export'"
     env:
       MINIO_ACCESS_KEY: "{{ minio.accesskey }}"
       MINIO_SECRET_KEY: "{{ minio.secretkey }}"

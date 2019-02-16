@@ -9,6 +9,7 @@
     - database
     - minio
     - redis
+    - cache-updater
     - { role: tomcat, when: with_tomcat is defined }
     - { role: http-service, when: with_tomcat is not defined }
   vars_files:
