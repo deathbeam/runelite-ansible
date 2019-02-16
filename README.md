@@ -20,18 +20,6 @@ Usage with Vagrant:
 vagrant up
 ```
 
-To deploy [http-service](https://github.com/runelite/runelite/tree/master/http-service)
-
-```bash
-mvn -pl http-service tomcat7:redeploy -nsu -Drunelite.tomcat.url="http://localhost:8080/manager/text/"
-```
-
-To build [http-api](https://github.com/runelite/runelite/tree/master/http-api) pointing to localhost:
-
-```bash
-mvn -Drunelite.api.url=http://localhost:8080 -Drunelite.api.ws=ws://localhost:8080 install
-```
-
 To dump MySQL tables (needs to be done after http-service is deployed):
 
 ```bash

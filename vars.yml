@@ -1,4 +1,5 @@
 directory: "{{ ansible_env.HOME }}/runelite-service"
+
 docker:
   network: runelite_network
 
@@ -19,3 +20,6 @@ minio:
   accesskey: AM54M27O4WZK65N6F8IP
   secretkey: /PZCxzmsJzwCHYlogcymuprniGCaaLUOET2n6yMP
   bucket: runelite
+
+tomcat:
+  enabled: false
