@@ -1,4 +1,5 @@
 directory: "{{ ansible_env.HOME }}/runelite-service"
+version: "1.5.13-SNAPSHOT"
 
 docker:
   network: runelite_network

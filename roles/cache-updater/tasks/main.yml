@@ -5,7 +5,7 @@
     hostname: cache-updater.local
     networks:
       - name: "{{ docker.network }}"
-    image: "runelite/cache-updater:1.5.13-SNAPSHOT"
+    image: "runelite/cache-updater:{{ version }}"
     restart_policy: on-failure
     links:
       - db
