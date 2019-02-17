@@ -23,4 +23,4 @@ minio:
   bucket: runelite
 
 tomcat:
-  enabled: false
+  deploy: false

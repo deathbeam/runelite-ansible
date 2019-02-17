@@ -10,7 +10,7 @@
     - minio
     - redis
     - cache-updater
-    - { role: tomcat, when: tomcat.enabled }
-    - { role: http-service, when: not tomcat.enabled }
+    - { role: tomcat, when: tomcat.deploy }
+    - { role: http-service }
   vars_files:
     - vars.yml
