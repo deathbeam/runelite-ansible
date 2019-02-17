@@ -8,7 +8,7 @@
     image: "runelite/http-service:{{ version }}"
     restart_policy: always
     ports:
-    - "9080:9080"
+    - "9080:8080"
     links:
       - db
       - minio
