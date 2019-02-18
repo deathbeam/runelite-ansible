@@ -57,7 +57,7 @@ spring_config:
     secretkey: /PZCxzmsJzwCHYlogcymuprniGCaaLUOET2n6yMP
     bucket: runelite
 
-  # Redis clien for temporary data storage
+  # Redis client for temporary data storage
   redis:
     pool.size: 10
     host: http://redis:6379
