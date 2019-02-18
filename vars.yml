@@ -22,5 +22,4 @@ minio:
   secretkey: /PZCxzmsJzwCHYlogcymuprniGCaaLUOET2n6yMP
   bucket: runelite
 
-tomcat:
-  deploy: false
+spring_config:

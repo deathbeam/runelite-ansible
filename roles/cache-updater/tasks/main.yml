@@ -10,3 +10,6 @@
     links:
       - db
       - minio
+    env:
+      spring_profiles_active: dev
+      SPRING_APPLICATION_JSON: "{{ spring_config | to_json }}"
