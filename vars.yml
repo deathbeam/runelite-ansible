@@ -1,5 +1,6 @@
 directory: "{{ ansible_env.HOME }}/runelite-service"
 version: "1.5.13-SNAPSHOT"
+cache_version: "1.5.12"
 
 docker:
   network: runelite_network
@@ -23,3 +24,52 @@ minio:
   bucket: runelite
 
 spring_config:
+  spring.profiles.active: dev
+
+  # Dev database
+  datasource:
+    runelite:
+      jndiName:
+      driverClassName: com.mysql.jdbc.Driver
+      type: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+      url: jdbc:mysql://db/runelite
+      username: runelite
+      password: runelite
+    runelite-cache:
+      jndiName:
+      driverClassName: com.mysql.jdbc.Driver
+      type: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+      url: jdbc:mysql://db/runelite-cache2
+      username: runelite
+      password: runelite
+    runelite-tracker:
+      jndiName:
+      driverClassName: com.mysql.jdbc.Driver
+      type: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+      url: jdbc:mysql://db/xptracker
+      username: runelite
+      password: runelite
+
+  # Minio client storage for cache
+  minio:
+    endpoint: http://minio:9000
+    accesskey: AM54M27O4WZK65N6F8IP
+    secretkey: /PZCxzmsJzwCHYlogcymuprniGCaaLUOET2n6yMP
+    bucket: runelite
+
+  # Redis clien for temporary data storage
+  redis:
+    pool.size: 10
+    host: http://redis:6379
+
+  # Google OAuth client
+  oauth:
+    client-id:
+    client-secret:
+
+  # Twitter client for feed
+  runelite:
+    twitter:
+      consumerkey:
+      secretkey:
+      listid: 968949795153948673
