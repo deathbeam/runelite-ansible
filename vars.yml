@@ -29,24 +29,16 @@ spring_config:
   # Dev database
   datasource:
     runelite:
-      jndiName:
-      driverClassName: com.mysql.jdbc.Driver
-      type: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
       url: jdbc:mysql://db/runelite
       username: runelite
       password: runelite
     runelite-cache:
       jndiName:
-      driverClassName: com.mysql.jdbc.Driver
-      type: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
       url: jdbc:mysql://db/runelite-cache2
       username: runelite
       password: runelite
     runelite-tracker:
-      jndiName:
-      driverClassName: com.mysql.jdbc.Driver
-      type: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
-      url: jdbc:mysql://db/xptracker
+      url: jdbc:mysql://db/runelite-tracker
       username: runelite
       password: runelite
 
@@ -59,7 +51,6 @@ spring_config:
 
   # Redis client for temporary data storage
   redis:
-    pool.size: 10
     host: http://redis:6379
 
   # Google OAuth client
@@ -72,4 +63,3 @@ spring_config:
     twitter:
       consumerkey:
       secretkey:
-      listid: 968949795153948673
