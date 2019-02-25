@@ -10,6 +10,7 @@
     - minio
     - redis
     - cache-updater
+    - session-service
     - tomcat
     - http-service
   vars_files:

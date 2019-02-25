@@ -1,6 +1,7 @@
 directory: "{{ ansible_env.HOME }}/runelite-service"
 version: "1.5.13-SNAPSHOT"
 cache_version: "1.5.12"
+session_service_version: "1.2"
 
 docker:
   network: runelite_network
