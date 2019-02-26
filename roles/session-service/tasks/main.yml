@@ -19,7 +19,7 @@
     tag: "{{ session_service_version }}"
     path: "{{ directory }}/session-service"
     buildargs:
-      SESSION_FILE: "runelite-session-{{ session_service_version }}"
+      BIN_FILE: "runelite-session-{{ session_service_version }}"
 -
   name: deploy session-service container
   docker_container:

@@ -1,0 +1,37 @@
+-
+  name: ensure {{ directory }}/ws-service dir exists
+  file: path="{{ directory }}/ws-service" state=directory
+-
+  name: download ws-service distribution
+  get_url:
+    url: "https://github.com/deathbeam/runelite-ws/releases/download/{{ ws_service_version }}/runelite-ws"
+    dest: "{{ directory }}/ws-service/runelite-ws-{{ ws_service_version }}"
+    checksum: sha256:c468811ed11484ea513764185d50c1c9fc3387c195429e4e4093e2d702c380a9
+-
+  name: write docker build file
+  copy:
+    src: Dockerfile
+    dest: "{{ directory }}/ws-service"
+
+- name: build ws-service image
+  docker_image:
+    name: runelite/ws-service
+    tag: "{{ ws_service_version }}"
+    path: "{{ directory }}/ws-service"
+    buildargs:
+      BIN_FILE: "runelite-ws-{{ ws_service_version }}"
+-
+  name: deploy ws-service container
+  docker_container:
+    name: ws-service
+    hostname: ws-service.local
+    networks:
+      - name: "{{ docker.network }}"
+    image: "runelite/ws-service:{{ ws_service_version }}"
+    restart_policy: on-failure
+    links:
+      - redis
+    ports:
+      - "9081:8081"
+    env:
+      REDIS_HOST: "redis:6379"
