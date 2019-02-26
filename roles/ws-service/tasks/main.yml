@@ -6,7 +6,7 @@
   get_url:
     url: "https://github.com/deathbeam/runelite-ws/releases/download/{{ ws_service_version }}/runelite-ws"
     dest: "{{ directory }}/ws-service/runelite-ws-{{ ws_service_version }}"
-    checksum: sha256:c468811ed11484ea513764185d50c1c9fc3387c195429e4e4093e2d702c380a9
+    checksum: sha256:b3df11de2783e4e1d0d90a61f9ea51a18dde63d503816df087b6756bc884d2dd
 -
   name: write docker build file
   copy:

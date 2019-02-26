@@ -1,8 +1,8 @@
 directory: "{{ ansible_env.HOME }}/runelite-service"
-version: "1.5.13-SNAPSHOT"
+version: "1.5.14-SNAPSHOT"
 cache_version: "1.5.12"
 session_service_version: "1.2"
-ws_service_version: "1.0"
+ws_service_version: "1.1"
 
 docker:
   network: runelite_network
@@ -26,7 +26,9 @@ minio:
   bucket: runelite
 
 spring_config:
-  spring.profiles.active: dev
+  # Enable debug logging
+  debug: true
+  logging.level.net.runelite: DEBUG
 
   # Dev database
   datasource:
@@ -59,6 +61,7 @@ spring_config:
   oauth:
     client-id:
     client-secret:
+    callback: http://localhost:9080/account/callback
 
   # Twitter client for feed
   runelite:
