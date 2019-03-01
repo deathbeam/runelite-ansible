@@ -9,10 +9,8 @@
     - database
     - minio
     - redis
-    - cache-updater
     - session-service
     - ws-service
     - tomcat
-    - http-service
   vars_files:
     - vars.yml

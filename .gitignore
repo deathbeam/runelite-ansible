@@ -1,3 +1,4 @@
 tomcat/lib/*.jar
 playbook.retry
 .idea/
+.vagrant/

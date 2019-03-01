@@ -7,3 +7,5 @@
       - name: "{{ docker.network }}"
     image: "redis:alpine"
     restart_policy: always
+    ports:
+      - "6379:6379"
