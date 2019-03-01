@@ -32,6 +32,6 @@
     links:
       - redis
     ports:
-      - "9081:8081"
+      - "8081:8081"
     env:
       REDIS_HOST: "redis:6379"
