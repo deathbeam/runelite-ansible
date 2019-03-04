@@ -4,9 +4,9 @@
 -
   name: download session-service distribution
   get_url:
-    url: "https://github.com/runelite/session-service/releases/download/{{ session_service_version }}/runelite-session"
-    dest: "{{ directory }}/session-service/runelite-session-{{ session_service_version }}"
-    checksum: sha256:a2b7c6cdbb0e02a240c9cf404f282c704c3a1fc6237cdb579e9d1501fae86bf8
+    url: "https://github.com/runelite/session-service/releases/download/{{ services.session.version }}/runelite-session"
+    dest: "{{ directory }}/session-service/runelite-session-{{ services.session.version }}"
+    checksum: "{{ services.session.checksum }}"
 -
   name: write docker build file
   copy:
@@ -16,10 +16,10 @@
 - name: build session-service image
   docker_image:
     name: runelite/session-service
-    tag: "{{ session_service_version }}"
+    tag: "{{ services.session.version }}"
     path: "{{ directory }}/session-service"
     buildargs:
-      BIN_FILE: "runelite-session-{{ session_service_version }}"
+      BIN_FILE: "runelite-session-{{ services.session.version }}"
 -
   name: deploy session-service container
   docker_container:
@@ -27,7 +27,7 @@
     hostname: session-service.local
     networks:
       - name: "{{ docker.network }}"
-    image: "runelite/session-service:{{ session_service_version }}"
+    image: "runelite/session-service:{{ services.session.version }}"
     restart_policy: on-failure
     links:
       - redis

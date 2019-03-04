@@ -1,8 +1,12 @@
 directory: "{{ ansible_env.HOME }}/runelite-service"
-version: "1.5.14-SNAPSHOT"
-cache_version: "1.5.12"
-session_service_version: "1.2"
-ws_service_version: "1.2"
+
+services:
+  session:
+    version: 1.2
+    checksum: sha256:a2b7c6cdbb0e02a240c9cf404f282c704c3a1fc6237cdb579e9d1501fae86bf8
+  ws:
+    version: 1.2
+    checksum: sha256:19745ef684ddf32681341be2b4b778c77eefb55aa080be2386485e31b6d3723d
 
 docker:
   network: runelite_network
