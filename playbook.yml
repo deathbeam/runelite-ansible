@@ -11,6 +11,5 @@
     - redis
     - session-service
     - ws-service
-    - tomcat
   vars_files:
     - vars.yml
