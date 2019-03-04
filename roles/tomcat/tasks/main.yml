@@ -42,7 +42,7 @@
     image: "tomcat:7-jre8"
     restart_policy: always
     ports:
-      - "8080:8080"
+      - "9080:8080"
     links:
       - db
       - minio
