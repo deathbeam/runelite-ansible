@@ -17,8 +17,8 @@ database:
       database: runelite
     - name: runelite-tracker
       database: runelite-tracker
-    - name: runelite-cache2
-      database: runelite-cache2
+    - name: runelite-cache
+      database: runelite-cache
 
 minio:
   accesskey: AM54M27O4WZK65N6F8IP

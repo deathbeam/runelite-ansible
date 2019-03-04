@@ -1,6 +1,6 @@
 -- MySQL dump 10.16  Distrib 10.2.16-MariaDB, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: runelite-cache2
+-- Host: localhost    Database: runelite-cache
 -- ------------------------------------------------------
 -- Server version	10.2.16-MariaDB-1:10.2.16+maria~bionic
 
@@ -16,11 +16,11 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `runelite-cache2`
+-- Current Database: `runelite-cache`
 --
 
 
-USE `runelite-cache2`;
+USE `runelite-cache`;
 
 --
 -- Table structure for table `archive`
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `index_archive` (
   KEY `archive` (`archive`) USING BTREE,
   CONSTRAINT `index_archive_ibfk_1` FOREIGN KEY (`index`) REFERENCES `index` (`id`),
   CONSTRAINT `index_archive_ibfk_2` FOREIGN KEY (`archive`) REFERENCES `archive` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=116431 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -117,4 +117,4 @@ CREATE TABLE IF NOT EXISTS `index_archive` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-18 16:40:54
+-- Dump completed on 2019-03-04 18:49:43
