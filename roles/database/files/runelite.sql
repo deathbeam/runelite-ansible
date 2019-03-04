@@ -109,22 +109,6 @@ CREATE TABLE IF NOT EXISTS `items` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `kc`
---
-
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXISTS `kc` (
-  `name` varchar(32) NOT NULL,
-  `boss` varchar(32) NOT NULL,
-  `kc` int(11) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  UNIQUE KEY `name` (`name`,`boss`),
-  KEY `time` (`time`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `kills`
 --
 
@@ -177,24 +161,6 @@ CREATE TABLE IF NOT EXISTS `prices` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `session`
---
-
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXISTS `session` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(36) NOT NULL,
-  `ip` varchar(39) NOT NULL,
-  `start` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `last` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `uuid` (`uuid`),
-  KEY `last` (`last`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `sessions`
 --
 
@@ -204,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   `user` int(11) NOT NULL,
   `uuid` varchar(36) NOT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
-  `last_used` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `last_used` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`user`),
   UNIQUE KEY `uuid` (`uuid`),
   KEY `user` (`user`),
@@ -256,4 +222,4 @@ CREATE TABLE IF NOT EXISTS `xtea` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-18 16:40:54
+-- Dump completed on 2019-03-04 19:01:47

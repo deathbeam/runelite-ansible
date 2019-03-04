@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `rank` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `xp` (
   UNIQUE KEY `player_time` (`player`,`time`),
   KEY `idx_time` (`time`),
   CONSTRAINT `fk_player` FOREIGN KEY (`player`) REFERENCES `player` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -137,4 +137,4 @@ CREATE TABLE IF NOT EXISTS `xp` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-18 16:40:54
+-- Dump completed on 2019-03-04 19:01:47
