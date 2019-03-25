@@ -11,7 +11,7 @@ services:
 docker:
   network: runelite_network
 
-database:
+mariadb:
   mount_library: false
   root_password: runelite
   user: runelite

@@ -9,7 +9,7 @@ echo "Dump directory " ${dumpdir}
 args="$*"
 
 dump_db() {
-	docker exec db sh -c 'exec mysqldump '$args' --skip-add-drop-table --databases '$1' -uroot -p"$MYSQL_ROOT_PASSWORD"' > ${dumpdir}/$1.sql
+	docker exec mariadb sh -c 'exec mysqldump '$args' --skip-add-drop-table --databases '$1' -uroot -p"$MYSQL_ROOT_PASSWORD"' > ${dumpdir}/$1.sql
 	sed -i 's/CREATE TABLE/CREATE TABLE IF NOT EXISTS/g' "${dumpdir}/$1.sql"
 	sed -i '/CREATE DATABASE/d' "${dumpdir}/$1.sql"
 }

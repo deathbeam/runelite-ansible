@@ -9,7 +9,7 @@
 -
   name: write database dump sql files
   copy: src="{{ item.database }}.sql" dest="{{ directory }}/mysql/init/{{ item.database }}.sql"
-  with_items: "{{ database.resources }}"
+  with_items: "{{ mariadb.resources }}"
 -
   name: ensure {{ directory }}/mysql/plugins dir exists
   file: path="{{ directory }}/mysql/plugins" state=directory
@@ -22,8 +22,8 @@
 -
   name: deploy database container
   docker_container:
-    name: db
-    hostname: db.local
+    name: mariadb
+    hostname: mariadb.local
     networks:
       - name: "{{ docker.network }}"
     image: "mariadb:10.2.16"
@@ -32,9 +32,9 @@
     ports:
       - "3306:3306"
     env:
-      MYSQL_ROOT_PASSWORD: "{{ database.root_password }}"
+      MYSQL_ROOT_PASSWORD: "{{ mariadb.root_password }}"
     volumes:
-      - "{{ '/var/lib/mysql:/var/lib/mysql' if database.mount_library else directory + '/mysql/init/:/docker-entrypoint-initdb.d' }}"
+      - "{{ '/var/lib/mysql:/var/lib/mysql' if mariadb.mount_library else directory + '/mysql/init/:/docker-entrypoint-initdb.d' }}"
       - "{{ directory }}/mysql/plugins/:/docker-entrypoint-dbplugins"
 -
   name: get database IP address

@@ -1,0 +1,10 @@
+create user if not exists '{{ mariadb.user }}'@'%' identified by '{{ mariadb.password }}';
+
+{% for resource in mariadb.resources %}
+create database if not exists `{{ resource.database }}`;
+grant all on `{{ resource.database }}`.* to '{{ mariadb.user }}'@'%' identified by '{{ mariadb.password }}' with grant option;
+{% endfor %}
+flush privileges;
+
+use `runelite-tracker`;
+create function level_for_xp returns integer soname 'libxp.so';

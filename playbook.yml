@@ -6,7 +6,7 @@
   roles:
     - { role: centos, when: ansible_distribution == 'CentOS' }
     - network
-    - database
+    - mariadb
     - minio
     - redis
     - session-service
