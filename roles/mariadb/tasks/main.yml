@@ -38,7 +38,7 @@
       - "{{ directory }}/mysql/plugins/:/docker-entrypoint-dbplugins"
 -
   name: get database IP address
-  command: "docker inspect --format '{''{ .NetworkSettings.IPAddress }''}' db"
+  command: "docker inspect --format '{''{ .NetworkSettings.IPAddress }''}' mariadb"
   register: mariadb_ip_address
 -
   name: wait for database to become ready
