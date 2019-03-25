@@ -1,0 +1,11 @@
+-
+  name: deploy mongo container
+  docker_container:
+    name: mongo
+    hostname: mongo.local
+    networks:
+      - name: "{{ docker.network }}"
+    image: "mongo:4"
+    restart_policy: always
+    ports:
+      - "27017:27017"

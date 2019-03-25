@@ -9,6 +9,7 @@
     - mariadb
     - minio
     - redis
+    - mongo
     - session-service
     - ws-service
   vars_files:
