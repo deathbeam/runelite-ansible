@@ -4,7 +4,7 @@ set -ex
 
 dir=`dirname "$(readlink -f "$0")"`
 echo "Directory " ${dir}
-dumpdir=${dir}/roles/database/files
+dumpdir=${dir}/roles/mariadb/files
 echo "Dump directory " ${dumpdir}
 args="$*"
 
@@ -14,7 +14,7 @@ dump_db() {
 	sed -i '/CREATE DATABASE/d' "${dumpdir}/$1.sql"
 }
 
-resources=$(cat ${dir}/vars.yml | yq -r -c '.database.resources[].database')
+resources=$(cat ${dir}/vars.yml | yq -r -c '.mariadb.resources[].database')
 echo "Dumping resources " ${resources}
 
 for resource in ${resources}; do
