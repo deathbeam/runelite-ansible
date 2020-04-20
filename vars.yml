@@ -19,10 +19,10 @@ mariadb:
   resources:
     - name: runelite
       database: runelite
-    - name: runelite-tracker
-      database: runelite-tracker
-    - name: runelite-cache
-      database: runelite-cache
+    - name: xptracker
+      database: xptracker
+    - name: cache
+      database: cache
 
 minio:
   accesskey: AM54M27O4WZK65N6F8IP

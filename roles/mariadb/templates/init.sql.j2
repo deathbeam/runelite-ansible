@@ -6,5 +6,5 @@ grant all on `{{ resource.database }}`.* to '{{ mariadb.user }}'@'%' identified 
 {% endfor %}
 flush privileges;
 
-use `runelite-tracker`;
+use `xptracker`;
 create function level_for_xp returns integer soname 'libxp.so';

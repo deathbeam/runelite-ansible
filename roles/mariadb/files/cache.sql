@@ -1,6 +1,6 @@
 -- MySQL dump 10.16  Distrib 10.2.16-MariaDB, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: runelite-cache
+-- Host: localhost    Database: cache
 -- ------------------------------------------------------
 -- Server version	10.2.16-MariaDB-1:10.2.16+maria~bionic
 
@@ -16,11 +16,11 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `runelite-cache`
+-- Current Database: `cache`
 --
 
 
-USE `runelite-cache`;
+USE `cache`;
 
 --
 -- Table structure for table `archive`
