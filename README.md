@@ -25,3 +25,18 @@ To dump MySQL tables (needs to be done after http-service is deployed):
 ```bash
 ./dump.sh --no-data
 ```
+
+After you have everything running, you need to set these JVM params for `http-service`:
+
+```
+-Drunelite.http-service.url=http://localhost:8080
+-Drunelite.ws.url=http://localhost:8081
+-Dspring.profiles.active=dev
+```
+
+and these for `runelite-client`:
+```
+-Drunelite.http-service.url=http://localhost:8080
+-Drunelite.ws.url=http://localhost:8081
+```
+
