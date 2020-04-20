@@ -40,3 +40,8 @@ and these for `runelite-client`:
 -Drunelite.ws.url=http://localhost:8081
 ```
 
+You can set the JVM params after you press *Run -> Edit Configurations...* like
+this:
+
+![edit-configurations](https://i.imgur.com/MjgQW2t.png)
+
