@@ -129,6 +129,43 @@ CREATE TABLE IF NOT EXISTS `kills` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `loottracker_drops`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `loottracker_drops` (
+  `killId` int(11) DEFAULT NULL,
+  `itemId` int(11) NOT NULL,
+  `itemQuantity` int(11) NOT NULL,
+  UNIQUE KEY `idx_kill_item` (`killId`,`itemId`),
+  CONSTRAINT `loottracker_drops_ibfk_1` FOREIGN KEY (`killId`) REFERENCES `loottracker_kills` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `loottracker_kills`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `loottracker_kills` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `last_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `accountId` int(11) NOT NULL,
+  `type` enum('NPC','PLAYER','EVENT','PICKPOCKET','UNKNOWN') NOT NULL,
+  `eventId` varchar(255) NOT NULL,
+  `amount` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_acc_type_event` (`accountId`,`type`,`eventId`),
+  KEY `idx_acc_lasttime` (`accountId`,`last_time`),
+  KEY `idx_time` (`last_time`),
+  CONSTRAINT `loottracker_kills_ibfk_1` FOREIGN KEY (`accountId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `osb_ge`
 --
 
@@ -222,4 +259,4 @@ CREATE TABLE IF NOT EXISTS `xtea` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-04 19:01:47
+-- Dump completed on 2020-04-20 20:20:16
