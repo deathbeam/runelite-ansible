@@ -5,7 +5,7 @@
   name: write database init sql file
   template:
     src: init.sql.j2
-    dest: "{{ directory }}/mysql/init/init.sql"
+    dest: "{{ directory }}/mysql/init/1init.sql"
 -
   name: write database dump sql files
   copy: src="{{ item.database }}.sql" dest="{{ directory }}/mysql/init/{{ item.database }}.sql"
