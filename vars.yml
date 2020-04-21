@@ -21,6 +21,7 @@ mariadb:
       database: runelite
     - name: xptracker
       database: xptracker
+      plugins: true
     - name: cache
       database: cache
 
