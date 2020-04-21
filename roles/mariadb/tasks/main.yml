@@ -1,4 +1,7 @@
 -
+  name: cleanup {{ directory }}/mysql/init dir
+  file: path="{{ directory }}/mysql/init" state=absent
+-
   name: ensure {{ directory }}/mysql/init dir exists
   file: path="{{ directory }}/mysql/init" state=directory
 -
